@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
-import {v4 as uuid} from 'uuid'
+import {v4 as uuid} from 'uuid';
 
 
 const initialState ={
@@ -34,15 +34,15 @@ const ReceiptForm = () => {
             <Form onSubmit={handleAddItem} autoComplete="off">
                 <Form.Group className="mb-3 d-flex justify-content-between align-items-center" controlId="formBasicDate">
                     <Form.Label>Date</Form.Label>
-                    <Form.Control className='w-75' name='date' type="date" placeholder="Enter date" value={state.date} onChange={onInputChange}/>
+                    <Form.Control className='w-75' name='date' type="date" placeholder="Enter date" value={state.date} onChange={onInputChange} required/>
                 </Form.Group>
                 <Form.Group className="mb-3 d-flex justify-content-between align-items-center" controlId="formBasicAmount">
                     <Form.Label>Amount</Form.Label>
-                    <Form.Control className='w-75' name='amount' type="text" placeholder="Enter Amount (in INR)" value={state.amount} onChange={onInputChange}/>
+                    <Form.Control className='w-75' name='amount' type="number" placeholder="Enter Amount (in INR)" value={state.amount} onChange={onInputChange} required/>
                 </Form.Group>
                 <Form.Group className="mb-3 d-flex justify-content-between align-items-center" controlId="formBasicPayment">
                     <Form.Label>Payment Mode</Form.Label>
-                    <select name='paymentMethod' className="w-75" id="inlineFormCustomSelect"  onChange={onInputChange}>
+                    <select name='paymentMethod' className="w-75" id="inlineFormCustomSelect"  onChange={onInputChange} required>
                         <option value="Cash">Cash</option>
                         <option value="Cheque">Cheque</option>
                         
@@ -50,7 +50,7 @@ const ReceiptForm = () => {
                 </Form.Group>
                 <Form.Group className="mb-3 d-flex justify-content-between align-items-center" controlId="formBasicRemark">
                     <Form.Label>Remark</Form.Label>
-                    <Form.Control name='remark' className='w-75' type="taxt" placeholder="Enter Remark" value={state.remark} onChange={onInputChange}/>
+                    <Form.Control name='remark' className='w-75' type="taxt" placeholder="Enter Remark" value={state.remark} onChange={onInputChange} required/>
                 </Form.Group>
 
                 
