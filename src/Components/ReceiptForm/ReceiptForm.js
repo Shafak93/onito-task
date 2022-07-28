@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import Table from 'react-bootstrap/Table';
+import {v4 as uuid} from 'uuid'
 
 
 const initialState ={
@@ -28,7 +30,7 @@ const ReceiptForm = () => {
     }
 
     return (
-        <div>
+        <div className='container w-50 mt-5'>
             <Form onSubmit={handleAddItem} autoComplete="off">
                 <Form.Group className="mb-3 d-flex justify-content-between align-items-center" controlId="formBasicDate">
                     <Form.Label>Date</Form.Label>
@@ -56,6 +58,33 @@ const ReceiptForm = () => {
                     Submit
                 </Button>
             </Form>
+
+            <div className='mt-5'>
+                {items.length > 0 && (
+            <Table striped bordered hover>
+            <thead>
+                <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Payment</th>
+                <th>Remark</th>
+                </tr>
+            </thead>
+            <tbody>
+                {items.map(rec=>(
+                   <tr key={rec.rowId}>
+                   <td>{rec.date}</td>
+                   <td>{rec.amount}</td>
+                   <td>{rec.paymentMethod}</td>
+                   <td>{rec.remark}</td>
+                   </tr> 
+                ))}
+                
+            </tbody>
+            </Table>
+                )}
+
+            </div>
         </div>
     );
 };
